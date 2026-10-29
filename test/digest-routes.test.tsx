@@ -88,7 +88,7 @@ describe('GET /digest/:night', () => {
     const res = await app.request(`/digest/${BAD}`);
     const html = await res.text();
     expect(res.status).toBe(200);
-    expect(html).toContain('1 line(s) could not be read');
+    expect(html).toMatch(/\b1 line(\(s\)|s)? could not be read/);
     expect(html).toContain('a/sync');
     expect(html).toContain('b/backup');
   });
